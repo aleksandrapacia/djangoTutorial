@@ -1,6 +1,8 @@
+<!--overriding template-->
+<!--szablon znacznika  -> fragment kodu generujący informacje przeznaczone do wyświetlenia na stronie -->
 <p>
-    <a href="{% url 'learning_logs:index' %}">Learning Log</a>
+    <a href="{% url 'learning_logs:index' %}">Learning Log</a> 
     <a href="{% url 'learning_logs:topics' %}">Topics</a>
 </p>
 
-{% block content %} {%endblock content %}
+{% block content %}{% endblock content %}
