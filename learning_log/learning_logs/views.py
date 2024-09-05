@@ -8,6 +8,6 @@ def index(request):
     return render(request, 'learning_logs/index.html')
 
 def topics(request):
-    topics = Topic.objects.order_by('date_added')
+    topics = Topic.objects.order_by('data_added')
     context = {'topics':topics}
     return render(request, 'learning_logs/topics.html', context)
