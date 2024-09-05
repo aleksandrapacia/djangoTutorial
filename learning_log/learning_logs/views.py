@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Topic
-from .forms import TopicForm
+from .forms import TopicForm, EntryForm
 # Create your views here.
 def index(request):
     """Main page for app Learning Logs"""
@@ -37,3 +37,21 @@ def new_topic(request):
     context = {'form':form}
     return render(request, 'learning_logs/new_topic.html', context)
         
+def new_entry(request, topic_id):
+    topic = Topic.objects.get(id=topic_id)
+
+    if request.method != 'POST':
+        # no data passed
+        form = EntryForm()
+    else:
+        # data passed, process it
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic 
+            new_entry.save()
+            return redirect('learning_logs:topic', topic_id=topic_id)
+        
+    # show an empty form
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/new_entry.html', context)
