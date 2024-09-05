@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 # it shows the way the data will be trated
@@ -33,7 +34,7 @@ class Entry(models.Model):
                 count+=1
             
         if count < 50:
-            return f"{self.topic[:50]}"
+            return f"{self.text[:50]}"
         else: 
-            return f"{self.topic[:50]}..."
+            return f"{self.text[:50]}..."
             

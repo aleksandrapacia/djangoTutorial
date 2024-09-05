@@ -11,4 +11,5 @@ urlpatterns = [
     # then it goes to a function topics() defined in views.py
     path('topics/(<int:topic_id>)', views.topic, name = 'topic'),
     path('topics/', views.topics, name='topics'),
+    path('new_topic/', views.new_topic, name='new_topic'),
 ]
